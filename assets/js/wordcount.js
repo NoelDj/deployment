@@ -31,9 +31,6 @@ function wordCounter() {
     if(isNaN(formula) || formula < 2){
         formula = 0
     }
-
-    score.textContent = formula
     /* const formula = 4.71*(charactAmount/wordAmount)+.5*(wordAmount/sentenceAmount)-21.43 */
-    console.log(formula)
 
 }
