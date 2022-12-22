@@ -1,5 +1,11 @@
 RewriteEngine on
+# Force to SSL
+RewriteCond %{HTTP:HTTPS} !1
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+# Force to WWW
+RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]  
 
 # added .html extension to /file by checking presence of file.html
 RewriteCond %{REQUEST_FILENAME} !-d
