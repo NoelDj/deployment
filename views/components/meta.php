@@ -9,7 +9,6 @@
     <link rel="canonical" href="https://www.desktools.tk/">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui-image-editor/latest/tui-image-editor.css" />
 </head>
 
 <body>
