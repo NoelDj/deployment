@@ -102,10 +102,16 @@
                     </div>
             </div>
 
+            <article class="card p-4">
+                <div class="col-md-8">
+                    <h2>How to use this word counter?</h2>
+                    <p>Paste your text in the field above.</p>
+                </div>
+            </article>
 
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
-            Created By Noel &copy; &middot; 2022 &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
+            Created By Noel &copy; &middot; <script type="text/javascript">document.write( new Date().getFullYear()+1 );</script> &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
         </footer>
     </div>
 

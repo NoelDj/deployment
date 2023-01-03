@@ -25,16 +25,19 @@
                 <h2 id="intro-heading">Create Passphrases with this Online Generator</h2>
                 <p>Create passphrases that can be used as online passwords on any sites.</p>
                 <p>Click the generate button to create a new password. You can also edit it to your liking.</p>
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0" nonce="6sqFn1p9"></script>
+                <div class="fb-share-button" data-href="https://www.desktools.tk/password-generator-based-on-words" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.desktools.tk%2Fpassword-generator-based-on-words&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
             </div>
-            
+
 
             <div class="card mb-5">
                 <div class="card-body">
                     <h1 class="card-title">Password Generator From Words</h1>
                     <div class="row mb-4">
                         <div class="col md-12 position-relative">
-                            <input type="text" class="form-control" id="word" >
-                            <button  class="btn btn-sm position-absolute" style="top:50%;left:96%;transform: translateY(-50%);display: flex;align-items: center;justify-content: center;padding: .4rem;" id="copyButton"><img src="../img/clipholder.png" width="15"></button>
+                            <input type="text" class="form-control" id="word">
+                            <button class="btn btn-sm position-absolute" style="top:50%;left:96%;transform: translateY(-50%);display: flex;align-items: center;justify-content: center;padding: .4rem;" id="copyButton"><img src="../img/clipholder.png" width="15"></button>
                         </div>
                     </div>
                     <div class="row">
@@ -91,16 +94,16 @@
 
             <article class="card p-4">
                 <div class="col-md-8">
-                        <h2>How are the passwords generated?</h2>
-                        <p>When you click the generate button several words are selected from a list containing more than 1000 words. These words are then combined into a passphrase.</p>
-                        <p>You can generate as many passwords as you like and edit them to make sure they are completely unique to you.</p>
-                        <h2>What makes up a strong password?</h2>
-                        <p><strong>Length:</strong> The length of a password is a factor in determening the strength of a password.
-                            Every character added exponentially increases the number of potential combinations for a word.</p>
-                        <p><strong>Random:</strong> A password with an unpredictable pattern is hard to guess. Use random random characters or words you rarely see in a book for example.
+                    <h2>How are the passwords generated?</h2>
+                    <p>When you click the generate button several words are selected from a list containing more than 1000 words. These words are then combined into a passphrase.</p>
+                    <p>You can generate as many passwords as you like and edit them to make sure they are completely unique to you.</p>
+                    <h2>What makes up a strong password?</h2>
+                    <p><strong>Length:</strong> The length of a password is a factor in determening the strength of a password.
+                        Every character added exponentially increases the number of potential combinations for a word.</p>
+                    <p><strong>Random:</strong> A password with an unpredictable pattern is hard to guess. Use random random characters or words you rarely see in a book for example.
                         By using at least 3 random words and aditionally combining them with a random character, significalty increases the strength if a password.</p>
-                        <h2>Do we store any passwords?</h2>
-                        <p>We do not store passwords created within our code.</p>
+                    <h2>Do we store any passwords?</h2>
+                    <p>We do not store passwords created within our code.</p>
                 </div>
             </article>
 
@@ -110,8 +113,18 @@
         </footer>
     </div>
 
-    <script src="../assets/js/app.js"></script>
+
 
 </body>
 
 </html>
+
+<?php
+require_once 'components/footer.php';
+?>
+
+
+
+<?php
+require_once 'components/scripts.php';
+?>
