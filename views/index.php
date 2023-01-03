@@ -12,7 +12,7 @@ require_once 'components/header.php';
 
     <div class="col-md-8 mb-4">
         <h1>Welcome to Desk Tools</h1>
-        <p>Links on the page</p>
+        <p>Links to online tools on the page</p>
 
         <ul>
             <li><a href="password-generator-based-on-words">Password generator</a></li>
