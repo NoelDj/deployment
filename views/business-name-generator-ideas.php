@@ -61,6 +61,7 @@ require_once 'components/footer.php';
     })
 
     async function fetchNames(term) {
+        document.querySelector('#card-container').innerHTML = ''
         const response = await fetch('https://business-name-generator.p.rapidapi.com/?q=' + term, {
             headers: {
                 "X-RapidAPI-Key": "d5932b9a88msh7798690afe732c8p1f1c36jsnae5430b6a52f",
