@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Worc counter for essays and posts. Use this word counter to see the length of your texts.">
+    <meta name="description" content="Worc counter for essays and posts. Use this word counter to see the length of your texts.">
     <title>Word Counter for Essays and Posts</title>
     <link rel="canonical" href="https://www.desktools.tk/word-counter-for-essays-and-posts">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +21,7 @@
             text-align: center;
             border-radius: 5px 5px 0px 0px;
         }
+
         .count p {
             color: #ceced7;
         }
@@ -30,6 +30,7 @@
             color: #ffffff;
             font-size: 22px;
         }
+
         .container {
             background-color: #ffffff;
             padding: 30px 20px 20px 20px;
@@ -65,41 +66,44 @@
                 <h1 id="intro-heading">Word Counter for Essays or Posts</h1>
                 <p>Use this word counter to see the length of your texts.</p>
                 <p>Simply paste in your text and the number of words and characters show up.</p>
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0" nonce="6sqFn1p9"></script>
+                <div class="fb-share-button" data-href="https://www.desktools.tk/password-generator-based-on-words" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.desktools.tk%2Fpassword-generator-based-on-words&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
             </div>
 
 
             <div class="card mb-5">
-                    <!--Result box-->
-                    <div class="count">
-                        <!--Word count results-->
-                        <div>
-                            <h5 id="word-count">0</h5>
-                            <p>Words</p>
-                        </div>
-                        <!--character count results-->
-                        <div>
-                            <h5 id="charac-count">0</h5>
-                            <p>Characters</p>
-                        </div>
-                        
-                        <div>
-                            <h5 id="charac-count-spaces">0</h5>
-                            <p>Characters without spaces</p>
-                        </div>
-
-                        <div>
-                            <h5 id="sentences">0</h5>
-                            <p>Sentences</p>
-                        </div>
-
+                <!--Result box-->
+                <div class="count">
+                    <!--Word count results-->
+                    <div>
+                        <h5 id="word-count">0</h5>
+                        <p>Words</p>
+                    </div>
+                    <!--character count results-->
+                    <div>
+                        <h5 id="charac-count">0</h5>
+                        <p>Characters</p>
                     </div>
 
-                    <!--A place to input content-->
-                    <div class="container">
-
-                        <textarea id="input-textarea" rows="12" placeholder="Start Typing here..."></textarea>
-
+                    <div>
+                        <h5 id="charac-count-spaces">0</h5>
+                        <p>Characters without spaces</p>
                     </div>
+
+                    <div>
+                        <h5 id="sentences">0</h5>
+                        <p>Sentences</p>
+                    </div>
+
+                </div>
+
+                <!--A place to input content-->
+                <div class="container">
+
+                    <textarea id="input-textarea" rows="12" placeholder="Start Typing here..."></textarea>
+
+                </div>
             </div>
 
             <article class="card p-4">
@@ -111,7 +115,9 @@
 
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
-            Created By Noel &copy; &middot; <script type="text/javascript">document.write( new Date().getFullYear()+1 );</script> &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
+            Created By Noel &copy; &middot; <script type="text/javascript">
+                document.write(new Date().getFullYear() + 1);
+            </script> &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
         </footer>
     </div>
 
