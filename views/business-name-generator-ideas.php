@@ -69,7 +69,6 @@ require_once 'components/footer.php';
             }
         });
         const names = await response.json();
-        console.log(names)
         names.forEach(e => {
             const div = document.createElement('div')
             slug = slugify(e)
@@ -80,7 +79,7 @@ require_once 'components/footer.php';
                         <div class="card-body">
                             <h5 class="card-title">${e}</h5>
                             <p class="card-text">${slug}.com</p>
-                            <p class="card-text"><small class="text-muted"><a href="https://www.godaddy.com/domainsearch/find?checkAvail=1&domainToCheck=${slug}">Check domain availability</a></small></p>
+                            <p class="card-text"><small class="text-muted"><a target="_blank" href="https://www.godaddy.com/domainsearch/find?checkAvail=1&domainToCheck=${slug}">Check domain availability</a></small></p>
                         </div>
                     </div>`
             document.querySelector('#card-container').appendChild(div)

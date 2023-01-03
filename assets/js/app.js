@@ -21,7 +21,6 @@ async function fetchWord(n, char) {
     const data = await response.json() 
     words = data
     let password = data.join(char)
-    console.log(password)
     phrase = password
     if (document.querySelector('#special').checked) {
         password = randomCharacters(password)

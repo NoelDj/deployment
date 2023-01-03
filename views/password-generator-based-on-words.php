@@ -124,7 +124,7 @@ require_once 'components/footer.php';
 ?>
 
 
-
+<script src="/assets/js/app.js"></script>
 <?php
 require_once 'components/scripts.php';
 ?>
