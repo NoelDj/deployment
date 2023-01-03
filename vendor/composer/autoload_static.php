@@ -4,18 +4,8 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb0b548ac8141f58246cd40642c1cbde4
+class ComposerStaticInita63f3542a945101f8125bcc7219e75a7
 {
-    public static $prefixesPsr0 = array (
-        'T' => 
-        array (
-            'Twig_' => 
-            array (
-                0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -23,8 +13,7 @@ class ComposerStaticInitb0b548ac8141f58246cd40642c1cbde4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInitb0b548ac8141f58246cd40642c1cbde4::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitb0b548ac8141f58246cd40642c1cbde4::$classMap;
+            $loader->classMap = ComposerStaticInita63f3542a945101f8125bcc7219e75a7::$classMap;
 
         }, null, ClassLoader::class);
     }
