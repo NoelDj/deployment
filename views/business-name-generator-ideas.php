@@ -15,7 +15,7 @@ require_once 'components/header.php';
         <p>Get ideas for your new business using this generator.</p>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0" nonce="6sqFn1p9"></script>
-        <div class="fb-share-button" data-href="https://www.desktools.tk/password-generator-based-on-words" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.desktools.tk%2Fpassword-generator-based-on-words&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+        <div class="fb-share-button" data-href="https://www.desktools.tk/business-name-generator-ideas" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.desktools.tk%2Fpassword-generator-based-on-words&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
     </div>
 
     <div class="col">
