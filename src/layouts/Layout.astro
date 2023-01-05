@@ -1,7 +1,8 @@
 ---
-let { title } = Astro.props;
-let { description } = Astro.props;
-let { url } = Astro.props;
+const { title } = Astro.props;
+const { description } = Astro.props;
+const { url } = Astro.props;
+const year = new Date().getFullYear()
 ---
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ let { url } = Astro.props;
 			<slot/>
 
 			<footer class="pt-5 my-5 text-muted border-top">
-				Created By Noel &copy; &middot; 2022 &middot; <a
+				Created By Noel &copy; &middot; {year} &middot; <a
 					href="https://noeldesigner.com">noeldesigner.com</a
 				>
 			</footer>
