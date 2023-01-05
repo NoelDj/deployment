@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon ./server.js",
-    "build": "vite build",
-    "preview": "vite preview",
-    "astro": "astro dev"
+    "dev": "astro dev",
+    "astro": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
