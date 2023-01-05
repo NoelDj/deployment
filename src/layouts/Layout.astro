@@ -1,0 +1,54 @@
+---
+let { title } = Astro.props;
+let { description } = Astro.props;
+let { url } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="canonical" href={url} />
+		<link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="/assets/css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="col-lg-8 mx-auto p-4 py-md-5">
+			<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+				<a
+					href="/"
+					class="d-flex align-items-center text-dark text-decoration-none"
+				>
+					<img src="img/desktools-logo.png" width="180" alt="" />
+				</a>
+			</header>
+
+			<slot/>
+
+			<footer class="pt-5 my-5 text-muted border-top">
+				Created By Noel &copy; &middot; 2022 &middot; <a
+					href="https://noeldesigner.com">noeldesigner.com</a
+				>
+			</footer>
+		</div>
+
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-B6DJPEFSQS"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-B6DJPEFSQS");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout  title="Welcome to Desktools.tk" url="https://www.desktools.tk/"
+description="Use online tools at Desk Tools.">
+    <main>
+        <div class="col-md-8 mb-4">
+            <h1 id="intro-heading">Word Counter for Essays or Posts</h1>
+            <p>Use this word counter to see the length of your texts.</p>
+            <p>Simply paste in your text and the number of words and characters show up.</p>
+        </div>
+
+
+        <div class="card mb-5">
+            <!--Result box-->
+            <div class="count">
+                <!--Word count results-->
+                <div>
+                    <h5 id="word-count">0</h5>
+                    <p>Words</p>
+                </div>
+                <!--character count results-->
+                <div>
+                    <h5 id="charac-count">0</h5>
+                    <p>Characters</p>
+                </div>
+
+                <div>
+                    <h5 id="charac-count-spaces">0</h5>
+                    <p>Characters without spaces</p>
+                </div>
+
+                <div>
+                    <h5 id="sentences">0</h5>
+                    <p>Sentences</p>
+                </div>
+
+            </div>
+
+            <!--A place to input content-->
+            <div class="container">
+
+                <textarea id="input-textarea" rows="12" placeholder="Start Typing here..."></textarea>
+
+            </div>
+        </div>
+
+        <article class="card p-4">
+            <div class="col-md-8">
+                <h2>How to use this word counter?</h2>
+                <p>Paste your text in the field above.</p>
+            </div>
+        </article>
+
+    </main>
+</Layout>
+
+<style>
+    .count {
+        background-color: #0547ad;
+        width: 100%;
+        padding: 7px;
+        position: relative;
+        display: flex;
+        font-family: sans-serif;
+        justify-content: space-around;
+        text-align: center;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .count p {
+        color: #ceced7;
+    }
+
+    .count h5 {
+        color: #ffffff;
+        font-size: 22px;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px 20px 20px 20px;
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    textarea {
+        width: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 16px;
+        line-height: 28px;
+        padding: 10px;
+        max-height: 280px;
+        color: #000000;
+        box-shadow: 0 20px 65px rgba(20, 114, 177, 0.1);
+    }
+</style>
+
+
+<script is:inline>
+    const inputTextArea = document.querySelector('#input-textarea');
+    const characCount = document.querySelector('#charac-count');
+    const wordCount = document.querySelector('#word-count');
+    const characSpaces = document.querySelector('#charac-count-spaces')
+    const sentences = document.querySelector('#sentences')
+    const score = document.querySelector('#score')
+    let formula = 0
+
+    inputTextArea.addEventListener('input', wordCounter);
+
+    window.addEventListener('DOMContentLoaded', wordCounter)
+
+    function wordCounter() {
+
+        let txt = inputTextArea.value.trim();
+        const wordAmount = txt.split(/\s+/).filter((item) => item).length
+        const sentenceAmount = inputTextArea.value.split(/[.!?]+\s/).filter(Boolean).length
+        const charactAmount = inputTextArea.value.length
+        const charactspacesAmount = inputTextArea.value.replace(/\s\s+/g, ' ').length
+
+
+        characSpaces.textContent = charactspacesAmount
+        characCount.textContent = charactAmount
+        wordCount.textContent = wordAmount
+        sentences.textContent = sentenceAmount
+
+        if (wordAmount > 20) {
+            formula = 4.71 * (charactAmount / wordAmount) + .5 * (wordAmount / sentenceAmount) - 21.43
+        }
+
+        if (isNaN(formula) || formula < 2) {
+            formula = 0
+        }
+
+    }
+</script>

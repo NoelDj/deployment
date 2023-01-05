@@ -1,0 +1,23 @@
+{
+  "name": "desktools",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "astro": "astro dev"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "astro": "^1.9.1",
+    "astro-seo": "^0.6.1",
+    "astro-seo-metadata": "^0.5.4",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  }
+}
