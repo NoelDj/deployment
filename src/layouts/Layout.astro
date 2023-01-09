@@ -19,19 +19,21 @@ const year = new Date().getFullYear()
 </head>
 
 <body>
-	<div class="col-lg-8 mx-auto p-4 py-md-5">
-		<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+	<header class="d-flex align-items-center p-4 mb-2 border-bottom bg-white">
+		<div class="container">
 			<a href="/" class="d-flex align-items-center text-dark text-decoration-none">
 				<img src="/img/desktools-logo.png" width="180" alt="" />
 			</a>
-		</header>
-
+		</div>
+	</header>
+	<div class="container my-4 p-4 py-md-5">
 		<slot />
-
-		<footer class="pt-5 my-5 text-muted border-top">
-			Created By Noel &copy; &middot; {year} &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
-		</footer>
 	</div>
+	<footer class="p-5 text-muted border-top bg-white">
+		<div class="container">
+			<p>Created By Noel &copy; &middot; {year} &middot; <a href="https://noeldesigner.com">noeldesigner.com</a></p>
+		</div>
+	</footer>
 
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZGKT437B2"></script>
 	<script>

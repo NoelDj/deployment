@@ -1,0 +1,250 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="Welcome to Desktools.tk" url="https://www.desktools.tk/color-palette-from-images/" description="Create color palettes from your images with our the palette generator. Simply upload an image and the tool do the work for you, extracting a range of harmonious colors to use in your designs.">
+	<main>
+		<div class="col-md-8 mb-4">
+			<h1>Color Palette From Images</h1>
+			<p>Create color palettes from images.</p>
+		</div>
+
+		<div class="card mb-4 p-4">
+			<div class="row">
+				<div class="col-md-4 border-right">
+					<div id="videoContainer">
+						<video src="" id="cam" autoplay="true"></video>
+
+					</div>
+					<div class="buttons">
+						<button class="btn btn-primary" id="start">Start</button>
+						<button class="btn btn-primary d-none" id="stop">Stop</button>
+						<button class="btn btn-primary d-none" id="snap">Take Screenshot</button>
+					</div>
+					<canvas class="d-none" id="canvas"></canvas>
+					<input type="text" name="" id="url" class="form-control mb-2">
+					<input type="file" name="" id="upload" class="form-control">
+				</div>
+				<div class="col-md-8 d-flex justify-content-center p-2" style="background-color: #f5f5f5; height: 500px;">
+					<img src="https://picsum.photos/400/300" alt="" id="img" style="object-fit: contain;">
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="palette">
+		</div>
+
+		<article class="card p-4">
+			<div class="col-md-8">
+				<h2>What is a color palette generator?</h2>
+				<p>A color palette generator is a tool that helps users to create a set of colors, a color palette.
+					Those can be used in
+					design
+					or other visual projects. The colors can be generated randomly, or based on a specific theme like an
+					image. Color palette generators can be helpful for finding color combinations that work well
+					together, and
+					can be useful for designers, artists, and other creative professionals.</p>
+				<h2>Why should I use it?</h2>
+				<p>There are several reasons why you might want to use a color palette generator:</p>
+				<ol>
+					<li>
+						<p>Save time: Creating a color palette from scratch can be time-consuming, especially if you're
+							not sure which colors
+							will work well together. Using a color palette generator can help you create a cohesive and
+							harmonious color scheme
+							quickly and easily.</p>
+					</li>
+					<li>
+						<p>Get inspiration: If you're struggling to come up with a color scheme for a project, a color
+							palette generator can
+							help spark ideas and inspire you.</p>
+					</li>
+					<li>
+						<p>Create a cohesive look: Using a consistent color palette can help create a cohesive and
+							professional look for your project. A color palette generator can help you find colors that
+							work well together and create a cohesive visual aesthetic.</p>
+					</li>
+					<li>
+						<p>Explore new color combinations: A color palette generator can help you discover new color
+							combinations that you may not have thought of on your own. This can be especially useful if
+							you're working on a project that requires a specific color scheme.</p>
+					</li>
+				</ol>
+				<p>Overall, a color palette generator can be a useful tool for designers, artists, and other creative
+					professionals, as it can help save time, provide inspiration, and create a cohesive look for a
+					project.</p>
+				<h2>What is a Color Palette?</h2>
+				<p>A color palette is a selection of colors that can be used in design or other visual projects. It is
+					essentially a tool that helps users choose the right colors and create a cohesive and harmonious
+					look for their project. A color palette can consist of a few colors or a larger range of hues, and
+					can be created randomly, based on a specific theme or color scheme, or by selecting colors from an
+					image or palette. Using a consistent color palette can help create a cohesive and professional look
+					for a project, and can be especially useful for designers, artists, and other creative professionals
+					who need to ensure that their work is visually appealing and on-brand. Overall, a color palette is
+					an important element in the design process, and can help bring a project to life with the right
+					selection of colors.</p>
+			</div>
+		</article>
+
+	</main>
+</Layout>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<script>
+	import {
+		GetColorName
+	} from 'hex-color-to-color-name';
+
+	let width = 320; // We will scale the photo width to this
+	let height = 0; // This will be computed based on the input stream
+	let video = document.querySelector('#cam')
+
+	let streaming = false;
+
+	const stopButton = document.querySelector('#stop')
+	const startButton = document.querySelector('#start')
+
+	startButton.addEventListener('click', start)
+
+	function start() {
+		let canvas = document.querySelector('#canvas')
+		let photo = document.querySelector('#img')
+		let takeScreenshot = document.querySelector('#snap')
+		stopButton.classList.remove('d-none')
+		startButton.classList.add('d-none')
+		takeScreenshot.classList.remove('d-none')
+		
+		if (navigator.mediaDevices.getUserMedia) {
+			navigator.mediaDevices.getUserMedia({
+					video: true
+				})
+				.then((stream) => {
+					video.srcObject = stream
+					video.play()
+				})
+				.catch((error) => {
+					console.log('error')
+				})
+		} else {
+			alert('Web cam not supported on your device.')
+		}
+
+		video.addEventListener('canplay', (e) => {
+			if (!streaming) {
+				height = (video.videoHeight / video.videoWidth) * width;
+				
+				video.setAttribute("width", width);
+				video.setAttribute("height", height);
+				canvas.setAttribute("width", width);
+				canvas.setAttribute("height", height);
+				streaming = true;
+			}
+		})
+
+		takeScreenshot.addEventListener('click', (e) => {
+			e.preventDefault()
+			takepicture();
+		})
+
+		function takepicture() {
+			const context = canvas.getContext("2d");
+			if (width && height) {
+				canvas.width = width;
+				canvas.height = height;
+				context.drawImage(video, 0, 0, width, height);
+
+				const data = canvas.toDataURL("image/png");
+				photo.setAttribute("src", data);
+			}
+		}
+
+		stopButton.addEventListener('click', stop)
+
+		function stop(e) {
+			const stream = video.srcObject;
+			stopButton.classList.add('d-none')
+			takeScreenshot.classList.add('d-none')
+
+			startButton.classList.remove('d-none')
+			
+			if(stream && stream.getTracks()){
+				console.log(2)
+				const tracks = stream.getTracks();
+				tracks.forEach((track) => {
+					track.stop();
+				});
+			}
+			
+			
+			
+			video.srcObject = null;
+			streaming = false;
+
+		}
+
+	}
+
+
+
+
+
+
+	const colorThief = new ColorThief();
+	const paletteElement = document.querySelector('#palette')
+	const img = document.querySelector('#img');
+	img.crossOrigin = "Anonymous";
+
+	document.querySelector('#url').addEventListener('change', (e) => {
+
+		const extension = e.target.value.split('.').pop()
+
+		if (extension === 'jpg') {
+			img.src = e.target.value
+			createPalette()
+		}
+	})
+
+	document.querySelector('#upload').addEventListener('change', (e) => {
+		const [file] = e.target.files
+		if (file) {
+			img.src = URL.createObjectURL(file)
+			createPalette()
+		}
+	})
+
+	window.addEventListener('DOMContentLoaded', () => {
+		createPalette()
+	})
+
+	function createPalette() {
+		if (img.complete) {
+			colorThief.getColor(img);
+		} else {
+
+			img.addEventListener('load', function () {
+				const palette = colorThief.getPalette(img, 8);
+				paletteElement.innerHTML = '';
+				palette.forEach(element => {
+					const hex = rgbToHex(element[0], element[1], element[2])
+					const colorName = GetColorName(hex)
+					const div = document.createElement('div')
+					div.className = 'col-md-3 mb-4'
+					div.innerHTML = `
+						<div class="card">
+							<div class="color" style="height: 200px;background-color: ${hex}; overflow:hidden;border-radius: inherit;"></div>
+							<div class="card-body">
+								<p><strong>${colorName}</strong></p>
+								<p>${hex}</p>
+							</div>
+						</div>`
+					paletteElement.append(div)
+				});
+			});
+		}
+
+		const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+			const hex = x.toString(16)
+			return hex.length === 1 ? '0' + hex : hex
+		}).join('')
+	}
+</script>
