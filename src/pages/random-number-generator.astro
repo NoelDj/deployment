@@ -97,12 +97,10 @@ import Layout from "../layouts/Layout.astro";
     }
 
     document.querySelector('#min').addEventListener('change', (e)=>{
-        let value = e.target.value
-        const max = document.querySelector('#max').value
-        if(value > max){
-            console.log('error')
-            value = max - 1
-            e.target.value = value
+        const value = parseInt(e.target.value)
+        const max = parseInt(document.querySelector('#max').value)
+        if(value >= max){
+            e.target.value = max - 1
         }
     })
 
