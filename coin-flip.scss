@@ -224,7 +224,7 @@ $facet_length: $size * $degs;
     }
 }
 
-@keyframes shake {
+@keyframes tilt {
     0% {
         transform: rotateX(0deg);
     }
