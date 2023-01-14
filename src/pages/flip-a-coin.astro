@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import '/coin-flip.scss';
+---
+
+<Layout title="Coin Spinner"
+    url="https://www.desktools.tk/flip-a-coin/"
+    description="Click the button to spin a coin and get heads or tails.">
+    <main>
+        <div class="col-md-8 mb-4">
+            <h1 id="intro-heading">Flip a coin</h1>
+            <p>Click the button to spin a coin and get heads or tails.</p>
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
+                <input class="form-check-input" type="checkbox" role="switch" id="darkmode" checked>
+            </div>
+        </div>
+
+
+        <div class="card mb-5 p-4 bg-dark" id="bg">
+            <div class="row">
+                
+                <div class="col-12 d-flex justify-content-center mb-3 gap-3">
+                    <button class="btn btn-primary" id="spin">Spin</button>
+                    <button class="btn btn-primary" id="reset">Reset</button>
+                </div>
+                <div class="col-12 d-flex justify-content-center gap-3 mb-3 text-white" id="stats">
+                    <p><strong>Heads:</strong> <span id="heads-counter">0</span></p>
+                    <p><strong>Tails:</strong> <span id="tails-counter">0</span></p>
+                </div>
+                <div class="col-12 d-flex justify-content-center mb-3" >
+                    <div class="outer" style="margin-bottom: 30px;">
+                        <div class="coin" id="coin-container">
+                            <div class="heads">
+                            </div>
+                            <div class="tails">
+                            </div>
+                            <div class="side">
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                              <div class="spoke"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <article class="card p-4">
+            <div class="col-md-8">
+                <h2>Flip a coin</h2>
+            </div>
+        </article>
+    </main>
+</Layout>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const time = 2
+        const btn = document.querySelector('#spin')
+        const reset = document.querySelector('#reset')
+        let headsCounter = 0
+        let tailsCounter = 0
+        let toggle = true
+
+        reset.addEventListener('click', (e) => {
+            headsCounter = 0
+            tailsCounter = 0
+            updateStats('reset')
+        })
+
+        btn.addEventListener('click', (e) => {
+            document.querySelector('.coin').style.animation = ''
+
+            const side = flipCoin()
+            console.log(side)
+            animateCoin(side)
+            disableButton()
+            setTimeout(() => {
+                updateStats(side)
+            }, time * 1000);
+        })
+
+        function updateStats(side) {
+            if (side == 'heads') {
+                headsCounter++
+            }
+            if (side == 'tails') {
+                tailsCounter++
+            }
+            if (side == 'reset') {
+                headsCounter = 0
+                tailsCounter = 0
+            }
+            document.querySelector('#heads-counter').textContent = headsCounter
+            document.querySelector('#tails-counter').textContent = tailsCounter
+        }
+
+        function disableButton() {
+            btn.disabled = true
+            setTimeout(() => {
+                btn.disabled = false
+            }, time * 1000);
+        }
+
+        function flipCoin() {
+            let result = ''
+            return Math.floor(Math.random() * 2) ? result = 'heads' : result = 'tails'
+        }
+        function animateCoin(side) {
+            setTimeout(() => {
+                toggle = !toggle;
+                let direction = ''
+                direction = toggle ? direction = 'x' : direction = 'y'
+                document.querySelector('.coin').style.animation = `spin-${side}-${direction} ${time}s forwards`
+            }, 1);
+        }
+
+        document.querySelector('#darkmode').addEventListener('click', ()=>{
+            document.querySelector('#bg').classList.toggle('bg-dark')
+            document.querySelector('#stats').classList.toggle('text-white')
+        })
+
+    })
+</script>

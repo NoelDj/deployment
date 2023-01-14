@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <circle cx="150" cy="150" r="150" fill="#f8dc4b"/>
+  <circle cx="150" cy="150" r="137.56" fill="none" stroke="#f2c33f" stroke-dasharray="0 0 4.32 12.97" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.32"/>
+  <circle cx="150" cy="150" r="125.6" transform="translate(-62.13 150) rotate(-45)" fill="#c7932c"/>
+  <circle cx="150" cy="150" r="120.06" transform="translate(-62.13 150) rotate(-45)" fill="#dda126"/>
+</svg>
