@@ -1,7 +1,7 @@
 @use "sass:math";
 
 $size: 300px;
-$depth: calc($size * .1);
+$depth: $size * .1;
 $speed: 2s;
 $facets: 32;
 $spokes: calc($facets / 2);
@@ -75,7 +75,7 @@ $facet_length: $size * $degs;
     -webkit-transform: rotateX(84.375deg);
     background: hsl(42, 52%, 68%);
     background: linear-gradient(to bottom, hsl(42, 60%, 75%) 0%, hsl(42, 60%, 75%) 74%, hsl(42, 40%, 60%) 75%, hsl(42, 40%, 60%) 100%);
-    background-size: 100% math.div($facets * $facet-length, 144);
+    background-size: 100% (($facets * $facet_length) / 144);
 }
 
 .coin .side .spoke:before {
@@ -182,4 +182,32 @@ $facet_length: $size * $degs;
 
 .coin .tails {
     background-image: url('/img/coins/coin-tails.svg');
+}
+
+@keyframes tilt-heads {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(100deg);
+    }
+
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes tilt-tails {
+    0% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotateX(100deg);
+    }
+
+    100% {
+        transform: rotateX(1800deg);
+    }
 }

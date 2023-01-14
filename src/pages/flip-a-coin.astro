@@ -86,12 +86,12 @@ import '/coin-flip.scss';
 
         reset.addEventListener('click', (e) => {
             let currentDegrees = parseInt(coin.style.transform.replace(/\D+/g, ''))
-            
+
             if (isNaN(currentDegrees)) {
                 currentDegrees = 0
             }
 
-            const rotation = currentDegrees + 100
+            const rotation = currentDegrees + 120
             headsCounter = 0
             tailsCounter = 0
             updateStats('reset')
