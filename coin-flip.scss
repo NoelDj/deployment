@@ -223,3 +223,17 @@ $facet_length: $size * $degs;
         transform: rotateX(1080deg);
     }
 }
+
+@keyframes shake {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(100deg);
+    }
+
+    100% {
+        transform: rotateX(0deg);
+    }
+}

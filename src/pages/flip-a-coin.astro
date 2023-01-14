@@ -76,21 +76,23 @@ import '/coin-flip.scss';
         const time = 2
         const btn = document.querySelector('#spin')
         const reset = document.querySelector('#reset')
+        const coin = document.querySelector('.coin')
         let headsCounter = 0
         let tailsCounter = 0
         let toggle = true
 
         reset.addEventListener('click', (e) => {
+            coin.style.animation = ''
             headsCounter = 0
             tailsCounter = 0
             updateStats('reset')
+            disableButton()
+            coin.style.animation = `shake ${time}s ease-in-out`
         })
 
         btn.addEventListener('click', (e) => {
-            document.querySelector('.coin').style.animation = ''
-
+            coin.style.animation = ''
             const side = flipCoin()
-            console.log(side)
             animateCoin(side)
             disableButton()
             setTimeout(() => {
@@ -114,10 +116,12 @@ import '/coin-flip.scss';
         }
 
         function disableButton() {
-            btn.disabled = true
-            setTimeout(() => {
-                btn.disabled = false
-            }, time * 1000);
+            document.querySelectorAll('button').forEach(e=>{
+                setTimeout(() => {
+                    e.disabled = false
+                }, time * 1000);
+                e.disabled = true 
+            })
         }
 
         function flipCoin() {
@@ -129,7 +133,7 @@ import '/coin-flip.scss';
                 toggle = !toggle;
                 let direction = ''
                 direction = toggle ? direction = 'x' : direction = 'y'
-                document.querySelector('.coin').style.animation = `spin-${side}-${direction} ${time}s forwards`
+                coin.style.animation = `spin-${side}-${direction} ${time}s forwards ease-in-out`
             }, 1);
         }
 
