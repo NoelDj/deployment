@@ -3,8 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import '/coin-flip.scss';
 ---
 
-<Layout title="Coin Flipper | Spin a Coin and get heads or tails"
-    url="https://www.desktools.tk/flip-a-coin/"
+<Layout title="Coin Flipper | Spin a Coin and get heads or tails" url="https://www.desktools.tk/flip-a-coin/"
     description="Click the button to flip a coin and get heads or tails.">
     <main>
         <div class="col-md-8 mb-4">
@@ -19,7 +18,7 @@ import '/coin-flip.scss';
 
         <div class="card mb-5 p-4 bg-dark" id="bg">
             <div class="row">
-                
+
                 <div class="col-12 d-flex justify-content-center mb-3 gap-3">
                     <button class="btn btn-primary" id="spin">Flip</button>
                     <button class="btn btn-primary" id="reset">Reset</button>
@@ -28,7 +27,7 @@ import '/coin-flip.scss';
                     <p><strong>Heads:</strong> <span id="heads-counter">0</span></p>
                     <p><strong>Tails:</strong> <span id="tails-counter">0</span></p>
                 </div>
-                <div class="col-12 d-flex justify-content-center mb-3" >
+                <div class="col-12 d-flex justify-content-center mb-3">
                     <div class="outer" style="margin-bottom: 30px;">
                         <div class="coin" id="coin-container">
                             <div class="heads">
@@ -36,27 +35,27 @@ import '/coin-flip.scss';
                             <div class="tails">
                             </div>
                             <div class="side">
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
-                              <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
+                                <div class="spoke"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -73,21 +72,42 @@ import '/coin-flip.scss';
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        const time = 2
+        const time = 1.75
         const btn = document.querySelector('#spin')
         const reset = document.querySelector('#reset')
         const coin = document.querySelector('.coin')
         let headsCounter = 0
         let tailsCounter = 0
+        let rotateX = 0
+        let rotateY = 0
         let toggle = true
 
+        coin.style.transition = time + 's'
+
         reset.addEventListener('click', (e) => {
-            coin.style.animation = ''
+            let currentDegrees = parseInt(coin.style.transform.replace(/\D+/g, ''))
+            
+            if (isNaN(currentDegrees)) {
+                currentDegrees = 0
+            }
+
+            const rotation = currentDegrees + 100
             headsCounter = 0
             tailsCounter = 0
             updateStats('reset')
             disableButton()
-            coin.style.animation = `tilt ${time}s ease-in-out`
+            coin.animate([{
+                    transform: `rotateX(${currentDegrees}deg)`
+                },
+                {
+                    transform: `rotateX(${rotation}deg)`
+                },
+                {
+                    transform: `rotateX(${currentDegrees}deg)`
+                }
+            ], {
+                duration: 1000
+            })
         })
 
         btn.addEventListener('click', (e) => {
@@ -116,11 +136,11 @@ import '/coin-flip.scss';
         }
 
         function disableButton() {
-            document.querySelectorAll('button').forEach(e=>{
+            document.querySelectorAll('button').forEach(e => {
                 setTimeout(() => {
                     e.disabled = false
                 }, time * 1000);
-                e.disabled = true 
+                e.disabled = true
             })
         }
 
@@ -128,16 +148,38 @@ import '/coin-flip.scss';
             let result = ''
             return Math.floor(Math.random() * 2) ? result = 'heads' : result = 'tails'
         }
-        function animateCoin(side) {
+
+        function animateCoin(newSide) {
+            let spin = 0
+            let oldSide = rotateX % 360
+
+            oldSide === 0 ? oldSide = 'heads' : oldSide = 'tails'
+
+            if (oldSide == 'heads' && newSide == 'heads') {
+                spin = 360
+            }
+
+            if (oldSide == 'heads' && newSide == 'tails') {
+                spin = 180
+            }
+
+            if (oldSide == 'tails' && newSide == 'heads') {
+                spin = 180
+            }
+
+            if (oldSide == 'tails' && newSide == 'tails') {
+                spin = 360
+            }
+
+            spin += 360
+
             setTimeout(() => {
-                toggle = !toggle;
-                let direction = ''
-                direction = toggle ? direction = 'x' : direction = 'y'
-                coin.style.animation = `spin-${side}-${direction} ${time}s forwards ease-in-out`
+                coin.style.transform = `rotateX(${rotateX + spin}deg)`
+                rotateX += spin
             }, 1);
         }
 
-        document.querySelector('#darkmode').addEventListener('click', ()=>{
+        document.querySelector('#darkmode').addEventListener('click', () => {
             document.querySelector('#bg').classList.toggle('bg-dark')
             document.querySelector('#stats').classList.toggle('text-white')
         })
