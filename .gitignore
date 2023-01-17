@@ -6,7 +6,7 @@ less/
 # build output
 dist/
 .output/
-
+test/
 # dependencies
 node_modules/
 

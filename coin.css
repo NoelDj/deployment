@@ -1,0 +1,16 @@
+@use "sass:math";
+#bg,
+#g {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#bg button,
+#g button {
+  background: black;
+}
+/*# sourceMappingURL=coin.css.map */

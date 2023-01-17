@@ -15,7 +15,6 @@ import '/coin-flip.scss';
             </div>
         </div>
 
-
         <div class="card mb-5 p-4 bg-dark" id="bg">
             <div class="row">
 
@@ -28,7 +27,11 @@ import '/coin-flip.scss';
                     <p><strong>Tails:</strong> <span id="tails-counter">0</span></p>
                 </div>
                 <div class="col-12 d-flex justify-content-center mb-3">
-                    <div class="outer">
+                    <div class="coin-wrapper">
+                        <div class="parts">
+                            <div class="part" data-dir="top"></div>
+                            <div class="part" data-dir="bottom"></div>
+                        </div>
                         <div class="coin" id="coin-container">
                             <div class="heads">
                             </div>
@@ -149,9 +152,10 @@ import '/coin-flip.scss';
             return Math.floor(Math.random() * 2) ? result = 'heads' : result = 'tails'
         }
 
-        function animateCoin(newSide) {
+        function animateCoin(newSide, dir) {
             let spin = 0
-            let oldSide = rotateX % 360
+            
+            let oldSide = Math.abs(rotateX) % 360
 
             oldSide === 0 ? oldSide = 'heads' : oldSide = 'tails'
 
@@ -173,11 +177,27 @@ import '/coin-flip.scss';
 
             spin += 360
 
+            if (dir == 'bottom') {
+                spin = spin * -1
+            }
+
             setTimeout(() => {
                 coin.style.transform = `rotateX(${rotateX + spin}deg)`
                 rotateX += spin
             }, 1);
         }
+
+        document.querySelectorAll('.part').forEach(e => {
+            e.addEventListener('click', (ev) => {
+                coin.style.animation = ''
+                const side = flipCoin()
+                animateCoin(side, ev.target.dataset.dir)
+                disableButton()
+                setTimeout(() => {
+                    updateStats(side)
+                }, time * 1000);
+            })
+        })
 
         document.querySelector('#darkmode').addEventListener('click', () => {
             document.querySelector('#bg').classList.toggle('bg-dark')
