@@ -12,13 +12,14 @@ fs.readdirSync("src/pages/").forEach(file => {
 
     let slug = file.replace('.astro', '')
 
-    let priority = 0.8
+    let priority = '0.8'
     let changefreq = 'monthly'
 
     if (slug == 'index') {
-        priority = 1.0
+        priority = '1.0'
         changefreq = 'daily'
         slug = ''
+        console.log(priority)
     } else {
         slug += '/'
     }
