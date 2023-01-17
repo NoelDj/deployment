@@ -37,7 +37,7 @@ fs.readdirSync("src/pages/").forEach(file => {
         return -1;
     }
 
-    const lastmod = year + '/' + month + '/' + date
+    const lastmod = year + '/0' + month + '/0' + date
     
     content += `
         <url>
