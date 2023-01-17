@@ -13,6 +13,20 @@ const year = new Date().getFullYear()
 	<meta name="description" content={description} />
 	<title>{title}</title>
 	<link rel="canonical" href={url} />
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{url}">
+	<meta property="og:title" content="{title}">
+	<meta property="og:description"
+		content="{description}">
+	<!-- <meta property="og:image"
+		content=""> -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{url}">
+	<meta property="twitter:title" content="{title}">
+	<meta property="twitter:description"
+		content="{description}">
+	<!-- <meta property="twitter:image"
+		content=""> -->
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="/assets/css/style.css" rel="stylesheet" />
 </head>
@@ -25,9 +39,11 @@ const year = new Date().getFullYear()
 			</a>
 		</div>
 	</header>
+
 	<div class="container my-4 p-4 py-md-5">
 		<slot />
 	</div>
+
 	<footer class="p-5 text-muted border-top bg-white">
 		<div class="container d-flex justify-content-between">
 			<p>Created By Noel &copy; &middot; {year} &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
@@ -37,6 +53,7 @@ const year = new Date().getFullYear()
 	</footer>
 
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZGKT437B2"></script>
+	
 	<script>
 		window.dataLayer = window.dataLayer || [];
 
