@@ -26,18 +26,18 @@ fs.readdirSync("src/pages/").forEach(file => {
     const stats = fs.statSync("src/pages/" + file)
     const mtime = stats.mtime
     const year = mtime.getFullYear()
-    const date = mtime.getDate()
+    const date = ("0" + mtime.getDate()).slice(-2)
     const month = getMonthFromString(String(mtime).split(' ')[1])
 
     function getMonthFromString(mon){
         var d = Date.parse(mon + `${date}, ${year}`)
         if(!isNaN(d)){
-           return new Date(d).getMonth() + 1;
+           return ("0" + (new Date(d).getMonth() + 1)).slice(-2)
         }
         return -1;
     }
 
-    const lastmod = year + '/0' + month + '/0' + date
+    const lastmod = year + '/' + month + '/' + date
     
     content += `
         <url>
