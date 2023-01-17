@@ -13,9 +13,10 @@ $i: 16;
     height: 600px;
     display: flex;
     justify-content: center;
-
-    button {
-        background: black;
+    #buttons {
+        button {
+            background: black;
+        }
     }
 }
 
@@ -25,6 +26,7 @@ $i: 16;
     -webkit-perspective: 1000;
     -webkit-box-reflect: below 5px linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0) 75%, hsla(0, 0%, 100%, 0.2));
     -webkit-filter: saturate(5) hue-rotate(2deg);
+
     .parts {
         position: absolute;
         height: 100%;
@@ -34,10 +36,14 @@ $i: 16;
         flex-wrap: wrap;
         z-index: 1;
         overflow: hidden;
+
         .part {
             width: 100%;
             height: 50%;
             cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
         }
     }
 

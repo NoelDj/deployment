@@ -18,7 +18,7 @@ import '/coin-flip.scss';
         <div class="card mb-5 p-4 bg-dark" id="bg">
             <div class="row">
 
-                <div class="col-12 d-flex justify-content-center mb-4 gap-3">
+                <div class="col-12 d-flex justify-content-center mb-4 gap-3" id="buttons">
                     <button class="btn btn-primary" id="spin">Flip</button>
                     <button class="btn btn-primary" id="reset">Reset</button>
                 </div>
@@ -29,8 +29,8 @@ import '/coin-flip.scss';
                 <div class="col-12 d-flex justify-content-center mb-3">
                     <div class="coin-wrapper">
                         <div class="parts">
-                            <div class="part" data-dir="top"></div>
-                            <div class="part" data-dir="bottom"></div>
+                            <button class="part" data-dir="top"></button>
+                            <button class="part" data-dir="bottom"></button>
                         </div>
                         <div class="coin" id="coin-container">
                             <div class="heads">
@@ -82,8 +82,6 @@ import '/coin-flip.scss';
         let headsCounter = 0
         let tailsCounter = 0
         let rotateX = 0
-        let rotateY = 0
-        let toggle = true
 
         coin.style.transition = time + 's'
 
