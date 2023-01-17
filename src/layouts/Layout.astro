@@ -4,9 +4,8 @@ const { description } = Astro.props;
 const { url } = Astro.props;
 const year = new Date().getFullYear()
 ---
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
 	<meta charset="utf-8" />
@@ -31,7 +30,8 @@ const year = new Date().getFullYear()
 	</div>
 	<footer class="p-5 text-muted border-top bg-white">
 		<div class="container d-flex justify-content-between">
-			<p>Created By Noel &copy; &middot; {year} &middot; <a href="https://noeldesigner.com">noeldesigner.com</a></p>
+			<p>Created By Noel &copy; &middot; {year} &middot; <a href="https://noeldesigner.com">noeldesigner.com</a>
+			</p>
 			<p><a href="/privacy-policy">Privacy Policy</a></p>
 		</div>
 	</footer>

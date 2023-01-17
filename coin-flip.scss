@@ -9,8 +9,8 @@ $degs: math.sin(calc(math.$pi / ($facets)));
 $facet_length: $size * $degs;
 $i: 16;
 
+
 #bg {
-    height: 600px;
     display: flex;
     justify-content: center;
     #buttons {
