@@ -16,7 +16,7 @@ fs.readdirSync("src/pages/").forEach(file => {
     let changefreq = 'monthly'
 
     if (slug == 'index') {
-        priority = 1
+        priority = 1.0
         changefreq = 'daily'
         slug = ''
     } else {
