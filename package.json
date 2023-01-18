@@ -15,11 +15,16 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "@astrojs/react": "^1.2.2",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
     "astro": "^1.9.1",
     "astro-seo": "^0.6.1",
     "astro-seo-metadata": "^0.5.4",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "hex-color-to-color-name": "^1.0.2"
+    "hex-color-to-color-name": "^1.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
