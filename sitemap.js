@@ -6,7 +6,7 @@ fs.readdirSync("src/pages/").forEach(file => {
 
     const base = 'https://www.desktools.tk/'
 
-    if (file == '404.astro') {
+    if (file == '404.astro' || file == '505.astro') {
         return
     }
 
